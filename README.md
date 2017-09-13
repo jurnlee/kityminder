@@ -74,6 +74,38 @@ grunt
 
 运行完成后，会发现生成了 `dist` 目录，里面就是可运行的 kityminder。
 
+## 服务
+
+https://github.com/gruntjs/grunt-contrib-connect  
+
+教程：http://yujiangshui.com/grunt-basic-tutorial/
+```
+> npm install grunt-contrib-connect --save-dev
+
+//gruntfile.js
+grunt.loadNpmTasks('grunt-contrib-connect');
+
+init:
+connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    keepalive: true,
+                    base: {
+                        path: 'dist',
+                        options: {
+                            index: 'index.html',
+                            maxAge: 300000
+                        }
+                    }
+                }
+            }
+        }
+        
+grunt.registerTask('serve', ['connect:server']);
+```
+
+
 ## 联系我们
 
 问题和建议反馈：[Github Issues](https://github.com/fex-team/kityminder/issues/new)

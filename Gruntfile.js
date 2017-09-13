@@ -20,6 +20,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     var banner = '/*!\n' +
         ' * ====================================================\n' +
@@ -180,6 +181,22 @@ module.exports = function(grunt) {
                 src: 'ui/theme/default/css/default.all.temp.css',
                 dest: 'ui/theme/default/css/default.all.css'
             }
+        },
+
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    keepalive: true,
+                    base: {
+                        path: 'dist',
+                        options: {
+                            index: 'index.html',
+                            maxAge: 300000
+                        }
+                    }
+                }
+            }
         }
 
     });
@@ -189,4 +206,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean', 'concat', 'uglify', 'less', 'autoprefixer', 'copy', 'replace']);
     grunt.registerTask('dev', ['less', 'autoprefixer', 'watch']);
 
+    grunt.registerTask('build_serve', ['clean', 'concat', 'uglify', 'less', 'autoprefixer', 'copy', 'replace','connect']);
+    grunt.registerTask('serve', ['connect:server']);
 };

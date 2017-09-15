@@ -78,7 +78,9 @@ grunt
 
 https://github.com/gruntjs/grunt-contrib-connect  
 
-教程：http://yujiangshui.com/grunt-basic-tutorial/
+教程：
+http://yujiangshui.com/grunt-basic-tutorial/  
+http://www.cnblogs.com/haogj/p/4785286.html  
 ```
 > npm install grunt-contrib-connect --save-dev
 
